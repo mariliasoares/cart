@@ -1,6 +1,17 @@
 <div class="products-wrapper">
-  <mat-card *ngFor="let product of products$ | async">
-    <mat-card-header>{{ product.title }} </mat-card-header>
+  <mat-card class="product-card" *ngFor="let product of products$ | async">
+    <div class="product-image">
+      <img [src]="product.image" [alt]="product.title" />
+    </div>
+    <mat-card-content>
+      <div class="product-title-wrapper">
+        <h2 class="product-title">{{ product.title }}</h2>
+      </div>
+      <span class="product-rating">Rating: {{ product.rating.rate }}/5</span>
+      <div class="product-price">R${{ product.price }}</div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button>Add to Card</button>
+    </mat-card-actions>
   </mat-card>
 </div>
-
