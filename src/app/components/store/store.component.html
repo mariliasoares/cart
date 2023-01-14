@@ -1,0 +1,6 @@
+<div class="products-wrapper">
+  <mat-card *ngFor="let product of products$ | async">
+    <mat-card-header>{{ product.title }} </mat-card-header>
+  </mat-card>
+</div>
+
