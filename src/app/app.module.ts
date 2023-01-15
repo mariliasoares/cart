@@ -4,25 +4,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreComponent } from './components/store/store.component';
+import { StoreComponent } from './store/store.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatCardModule } from '@angular/material/card';
-
+import { SharedModule } from './shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    StoreComponent
-  ],
+  declarations: [AppComponent, StoreComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatCardModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
