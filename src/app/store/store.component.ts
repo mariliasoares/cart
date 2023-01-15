@@ -33,10 +33,12 @@ export class StoreComponent implements OnInit {
   }
 
   deleteItem(id: number) {
-    if (this.cartItems.length > 0)
-      this.cartItems.forEach((item: IProduct, index) => {
-        if (item.id === id) this.cartItems.splice(index, 1);
-      });
+    this.cartItems.forEach((item, index) => {
+      if (item.id === id) {
+        this.cartItems.splice(index, 1);
+        return;
+      }
+    });
   }
 
   checkEmptyCart() {
