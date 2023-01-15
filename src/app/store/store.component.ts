@@ -1,5 +1,5 @@
 import { map, Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StoreService } from './services/store.service';
 import { IProduct } from './models/product.interface';
 
@@ -9,6 +9,8 @@ import { IProduct } from './models/product.interface';
   styleUrls: ['./store.component.scss'],
 })
 export class StoreComponent implements OnInit {
+  @ViewChild('sidenav') cart: any;
+  
   public products$: Observable<IProduct[]> = new Observable<[]>();
   public cartItems: IProduct[] = [];
   emptyCart = true;
@@ -25,6 +27,7 @@ export class StoreComponent implements OnInit {
 
   addToCard(item: IProduct) {
     this.addItem(item);
+    this.cart.open();
   }
 
   addItem(item: IProduct) {
