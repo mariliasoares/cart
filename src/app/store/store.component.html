@@ -1,28 +1,50 @@
 <mat-sidenav-container hasBackdrop="true">
-  <mat-sidenav #sidenav mode="over" position="end" fixedInViewport="true" fixedTopGap="top" fixedBottomGap="bottom">
+  <mat-sidenav
+    #sidenav
+    mode="over"
+    position="end"
+    fixedInViewport="true"
+    fixedTopGap="top"
+    fixedBottomGap="bottom"
+  >
     <section class="cart-container">
       <div>
-        <button mat-icon-button aria-label="Fechar carrinho" (click)="sidenav.toggle()">
+        <button
+          mat-icon-button
+          aria-label="Fechar carrinho"
+          (click)="sidenav.toggle()"
+        >
           <mat-icon>close</mat-icon>
         </button>
         <h2>Carrinho</h2>
       </div>
-      <div class="card-content">
-        <div *ngIf="checkEmptyCart()" class="empty-cart">
-          <p>Seu carrinho está vazio</p>
-          <mat-icon>shopping_cart</mat-icon>
-        </div>
-        <div *ngIf="!checkEmptyCart()" class="stocked-cart">
-          <div class="cart-item" *ngFor="let item of cartItems">
-            <div>
-              <img [src]="item.image" [alt]="item.title" />
-              {{ item.title }}
-            </div>
-            <button mat-icon-button>
-              <mat-icon color="warn">delete</mat-icon>
-            </button>
+      <div class="cart-content-wrapper">
+        <ng-container *ngIf="!checkEmptyCart(); else cartEmpty">
+          <ul class="stocked-cart" *ngFor="let item of cartItems">
+            <li class="cart-item">
+              <div class="item-image-wrapper">
+                <img [src]="item.image" [alt]="item.title" />
+              </div>
+              <div class="item-information">
+                <h3>{{ item.title }}</h3>
+                <div>amount</div>
+                <span>price</span>
+              </div>
+              <div class="item-actions">
+                <button mat-icon-button (click)="deleteItem(item.id)">
+                  <mat-icon color="warn">delete</mat-icon>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+        <!-- Empty Cart -->
+        <ng-template #cartEmpty>
+          <div class="empty-cart">
+            <p>Seu carrinho está vazio</p>
+            <mat-icon>shopping_cart</mat-icon>
           </div>
-        </div>
+        </ng-template>
       </div>
     </section>
   </mat-sidenav>
@@ -32,7 +54,12 @@
       <mat-toolbar-row>
         <span>Bootcamp Eldorado: Carrinho Challenge</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon" aria-label="Abrir carrinho" (click)="sidenav.toggle()">
+        <button
+          mat-icon-button
+          class="example-icon"
+          aria-label="Abrir carrinho"
+          (click)="sidenav.toggle()"
+        >
           <mat-icon>shopping_cart_checkout</mat-icon>
         </button>
       </mat-toolbar-row>
@@ -47,11 +74,15 @@
           <div class="product-title-wrapper">
             <h2 class="product-title">{{ product.title }}</h2>
           </div>
-          <span class="product-rating">Rating: {{ product.rating.rate }}/5</span>
+          <span class="product-rating"
+            >Rating: {{ product.rating.rate }}/5</span
+          >
           <div class="product-price">R${{ product.price }}</div>
         </mat-card-content>
         <mat-card-actions class="product-actions">
-          <button mat-flat-button color="primary" (click)="addToCard(product)">Add ao carrinho</button>
+          <button mat-flat-button color="primary" (click)="addToCard(product)">
+            Add ao carrinho
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>
