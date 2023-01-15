@@ -50,4 +50,44 @@
       font-weight: 500;
     }
   }
+
+  .product-actions {
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.cart-container {
+  padding: 20px;
+  width: 350px;
+  box-sizing: border-box;
+  height: 100%;
+
+  h2 {
+    margin: 8px 0 0 12px;
+  }
+
+  .card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 92px);
+
+    .empty-cart {
+      text-align: center;
+    }
+
+    .stocked-cart {
+      width: 100%;
+
+      img {
+        max-width: 100px;
+      }
+    }
+  }
 }
