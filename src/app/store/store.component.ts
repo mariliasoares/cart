@@ -1,7 +1,7 @@
 import { map, Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from './services/store.service';
-import { IProduct } from './models/store.interface';
+import { IProduct } from './models/product.interface';
 
 @Component({
   selector: 'store',
