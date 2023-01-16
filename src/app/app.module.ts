@@ -21,6 +21,7 @@ import { StoreComponent } from './store/store.component';
     FormsModule,
     ReactiveFormsModule,
     NgxSkeletonLoaderModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

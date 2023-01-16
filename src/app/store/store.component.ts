@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { catchError, Observable, of } from 'rxjs';
 
 import { ErrorDialogComponent } from '../shared/components/error-dialog/error-dialog.component';
+import { IProductCart } from './models/cart.interface';
 import { IProduct } from './models/product.interface';
 import { StoreService } from './services/store.service';
 
@@ -14,9 +16,11 @@ import { StoreService } from './services/store.service';
 export class StoreComponent implements OnInit {
   @ViewChild('sidenav') cart: any;
 
+  public productAmount: FormControl = new FormControl(1);
   public products$: Observable<IProduct[]> = new Observable<[]>();
-  public cartItems: IProduct[] = [];
-  emptyCart = true;
+  public cartItems: IProductCart[] = [];
+  public amountOfProducts = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  public cartTotal: number = 0;
 
   constructor(private storeService: StoreService, public dialog: MatDialog) {}
 
@@ -33,22 +37,89 @@ export class StoreComponent implements OnInit {
     this.dialog.open(ErrorDialogComponent);
   }
 
-  openCart() {}
+  containsProductInCart(id: number): boolean {
+    return this.cartItems.some((item) =>item.info.id === id);
+  }
 
   addToCard(item: IProduct) {
     this.addItem(item);
     this.cart.open();
   }
 
-  addItem(item: IProduct) {
-    this.cartItems.push(item);
+  addItem(item: IProduct): void {
+    if (!this.containsProductInCart(item.id)) {
+      this.cartItems.push({
+        amount: 1,
+        totalPrice: item.price,
+        info: item,
+      });
+      console.log(this.cartItems);
+      this.cartTotal = this.calculateCartTotal();
+      return;
+    }
+
+    const productIndex = this.findProductIndex(item.id);
+    this.increaseProductAmount(productIndex);
+    const cartProduct = this.getProduct(productIndex);
+    this.updateProductTotalPrice(cartProduct, productIndex);
+
     console.log(this.cartItems);
+    this.cartTotal = this.calculateCartTotal();
   }
 
-  deleteItem(id: number) {
+  increaseProductAmount(index: number): void {
+    if (this.cartItems[index].amount < 9) {
+      this.cartItems[index].amount += 1;
+      this.productAmount.setValue(this.cartItems[index].amount);
+    }
+  }
+
+  handleProductAmountChange(product: IProductCart, index: number): void {
+    this.cartItems[index].amount = this.productAmount.value;
+    this.updateProductTotalPrice(
+      product,
+      this.findProductIndex(product.info.id)
+    );
+    this.cartTotal = this.calculateCartTotal();
+  }
+
+  calculateItemTotalPrice(product: IProductCart): number {
+    return product.amount * product.info.price;
+  }
+
+  findProductIndex(id: number): number {
+    let productIndex = -1;
     this.cartItems.forEach((item, index) => {
-      if (item.id === id) {
+      if (item.info.id === id) {
+        console.log(item);
+        productIndex = index;
+        return;
+      }
+    });
+
+    return productIndex;
+  }
+
+  getProduct(index: number): IProductCart {
+    return this.cartItems[index];
+  }
+
+  updateProductTotalPrice(product: IProductCart, index: number): void {
+    this.cartItems[index].totalPrice = this.calculateItemTotalPrice(product);
+  }
+
+  calculateCartTotal(): number {
+    if (this.cartItems.length === 0) return 0;
+    return this.cartItems
+      .map((product) => product.totalPrice)
+      .reduce((acc, cur) => acc + cur);
+  }
+
+  deleteItem(id: number): void {
+    this.cartItems.forEach((product, index) => {
+      if (product.info.id === id) {
         this.cartItems.splice(index, 1);
+        this.cartTotal = this.calculateCartTotal();
         return;
       }
     });

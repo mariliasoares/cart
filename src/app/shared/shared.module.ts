@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
+
 
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 
@@ -22,6 +24,8 @@ const materialModules = [
   MatFormFieldModule,
   MatProgressSpinnerModule,
   MatDialogModule,
+  MatSelectModule
+  
 ];
 
 const components = [ErrorDialogComponent];
