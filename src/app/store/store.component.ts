@@ -1,7 +1,10 @@
-import { map, Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { StoreService } from './services/store.service';
+import { MatDialog } from '@angular/material/dialog';
+import { catchError, Observable, of } from 'rxjs';
+
+import { ErrorDialogComponent } from '../shared/components/error-dialog/error-dialog.component';
 import { IProduct } from './models/product.interface';
+import { StoreService } from './services/store.service';
 
 @Component({
   selector: 'store',
@@ -10,17 +13,24 @@ import { IProduct } from './models/product.interface';
 })
 export class StoreComponent implements OnInit {
   @ViewChild('sidenav') cart: any;
-  
+
   public products$: Observable<IProduct[]> = new Observable<[]>();
   public cartItems: IProduct[] = [];
   emptyCart = true;
 
-  constructor(private storeService: StoreService) {}
+  constructor(private storeService: StoreService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.products$ = this.storeService
-      .getProducts()
-      .pipe(map((products) => products));
+    this.products$ = this.storeService.getProducts().pipe(
+      catchError((err) => {
+        this.handleError();
+        return of([]);
+      })
+    );
+  }
+
+  handleError() {
+    this.dialog.open(ErrorDialogComponent);
   }
 
   openCart() {}

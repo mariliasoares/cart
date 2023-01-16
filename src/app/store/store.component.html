@@ -65,8 +65,8 @@
       </mat-toolbar-row>
     </mat-toolbar>
 
-    <div class="products-wrapper">
-      <mat-card class="product-card" *ngFor="let product of products$ | async">
+    <div *ngIf="products$ | async as products; else loading" class="products-wrapper">
+      <mat-card class="product-card" *ngFor="let product of products">
         <div class="product-image">
           <img [src]="product.image" [alt]="product.title" />
         </div>
@@ -86,5 +86,15 @@
         </mat-card-actions>
       </mat-card>
     </div>
+    <ng-template #loading>
+      <div class="loading">
+        <ngx-skeleton-loader count="20" [theme]="{
+          'border-radius': '25px',
+          height: '400px',
+          width: '240px',
+          border: '20px solid #fafafa'
+        }"></ngx-skeleton-loader>
+      </div>
+    </ng-template>
   </mat-sidenav-content>
 </mat-sidenav-container>
