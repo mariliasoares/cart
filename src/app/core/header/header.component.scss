@@ -1,0 +1,25 @@
+.toolbar {
+  .mat-toolbar-row.toolbar-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10%;
+  }
+
+  .mat-toolbar-row.toolbar-row-1 {
+    .toolbar-logo {
+      width: 60px;
+      height: 60px;
+
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  .mat-toolbar-row.toolbar-row-2 {
+    .categories-list {
+      display: flex;
+    }
+  }
+}

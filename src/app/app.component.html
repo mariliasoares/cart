@@ -1,3 +1,19 @@
-<div id="store-container">
-  <store></store>
-</div>
+<mat-sidenav-container hasBackdrop="true">
+  <mat-sidenav
+    #sidenav
+    mode="over"
+    position="end"
+    fixedInViewport="true"
+    fixedTopGap="top"
+    fixedBottomGap="bottom"
+  >
+    <app-mini-cart></app-mini-cart>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div id="store-container">
+      <app-header></app-header>
+      <app-home></app-home>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

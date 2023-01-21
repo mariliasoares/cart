@@ -1,0 +1,43 @@
+<mat-toolbar color="primary" class="toolbar">
+  <mat-toolbar-row class="toolbar-row toolbar-row-1">
+    <div class="toolbar-logo">
+      <img src="./assets/img/logo.svg" alt="Site logo" />
+    </div>
+    <span>Bootcamp Eldorado: Cart Challenge</span>
+    <div>
+      <button mat-icon-button aria-label="Open Cart">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Open Cart" (click)="toggleCart()">
+        <mat-icon>shopping_cart_checkout</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="toolbar-row toolbar-row-2">
+    <button mat-button [matMenuTriggerFor]="belowMenu">
+      <mat-icon>menu</mat-icon><span>Todos</span>
+    </button>
+    <mat-menu class="categories-menu" panelClass="categories-menu" #belowMenu="matMenu" yPosition="below">
+      <!-- <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+      <button mat-menu-item>Item 2</button> -->
+      <mat-list class="categories-list">
+        <div mat-subheader>Category 1</div>
+        <mat-list-item>
+          <div matListItemTitle>a</div>
+          <div matListItemLine>b</div>
+        </mat-list-item>
+        <div mat-subheader>Category 2</div>
+        <mat-list-item>
+          <div matListItemTitle>a</div>
+          <div matListItemLine>b</div>
+        </mat-list-item>
+        <div mat-subheader>Category 2</div>
+        <mat-list-item>
+          <div matListItemTitle>a</div>
+          <div matListItemLine>b</div>
+        </mat-list-item>       
+      </mat-list>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
