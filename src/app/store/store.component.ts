@@ -21,6 +21,7 @@ export class StoreComponent implements OnInit {
   public cartItems: IProductCart[] = [];
   public amountOfProducts = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   public cartTotal: number = 0;
+  public subtotal: number = 0;
 
   constructor(private storeService: StoreService, public dialog: MatDialog) {}
 
@@ -56,6 +57,7 @@ export class StoreComponent implements OnInit {
       });
       console.log(this.cartItems);
       this.cartTotal = this.calculateCartTotal();
+      this.subtotal = this.cartTotal;
       return;
     }
 
@@ -66,6 +68,7 @@ export class StoreComponent implements OnInit {
 
     console.log(this.cartItems);
     this.cartTotal = this.calculateCartTotal();
+    this.subtotal = this.cartTotal;
   }
 
   increaseProductAmount(index: number): void {
@@ -82,6 +85,7 @@ export class StoreComponent implements OnInit {
       this.findProductIndex(product.info.id)
     );
     this.cartTotal = this.calculateCartTotal();
+    this.subtotal = this.cartTotal;
   }
 
   calculateItemTotalPrice(product: IProductCart): number {
@@ -121,6 +125,7 @@ export class StoreComponent implements OnInit {
       if (product.info.id === id) {
         this.cartItems.splice(index, 1);
         this.cartTotal = this.calculateCartTotal();
+        this.subtotal = this.cartTotal;
         return;
       }
     });
