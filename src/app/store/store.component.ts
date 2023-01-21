@@ -72,7 +72,8 @@ export class StoreComponent implements OnInit {
   }
 
   increaseProductAmount(index: number): void {
-    if (this.cartItems[index].amount < 9) {
+    const MAX_ITEMS_PER_PURCHASE = 9;
+    if (this.cartItems[index].amount < MAX_ITEMS_PER_PURCHASE) {
       this.cartItems[index].amount += 1;
       this.productAmount.setValue(this.cartItems[index].amount);
     }
