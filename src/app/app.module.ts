@@ -1,5 +1,7 @@
+import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import ptBr from '@angular/common/locales/pt';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -7,11 +9,13 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './core/header/header.component';
+import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from './shared/shared.module';
-import { StoreComponent } from './store/store.component';
 
+registerLocaleData(ptBr);
 @NgModule({
-  declarations: [AppComponent, StoreComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,9 +25,12 @@ import { StoreComponent } from './store/store.component';
     FormsModule,
     ReactiveFormsModule,
     NgxSkeletonLoaderModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+    { provide: LOCALE_ID, useValue: 'pt' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
