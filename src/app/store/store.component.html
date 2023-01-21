@@ -22,14 +22,14 @@
     >
       <mat-card class="product-card" *ngFor="let product of products">
         <div class="product-image">
-          <img [src]="product.image" [alt]="product.title" />
+          <img [src]="product.images[0]" [alt]="product.title" />
         </div>
         <mat-card-content>
           <div class="product-title-wrapper">
             <h2 class="product-title">{{ product.title }}</h2>
           </div>
           <span class="product-rating"
-            >Rating: {{ product.rating.rate }}/5</span
+            >Rating: {{ product.rating }}/5</span
           >
           <div class="product-price">R${{ product.price }}</div>
         </mat-card-content>
@@ -81,7 +81,7 @@
           <ul class="stocked-cart" *ngFor="let item of cartItems; index as i">
             <li class="cart-item">
               <div class="item-image-wrapper">
-                <img [src]="item.info.image" [alt]="item.info.title" />
+                <img [src]="item.info.images[0]" [alt]="item.info.title" />
               </div>
               <div class="item-information">
                 <h3>{{ item.info.title }}</h3>
@@ -112,7 +112,7 @@
     <div class="cart-checkout">
       <div class="cart-price-summary">
         <p>Subtotal</p>
-        <span>1111</span>
+        <span>{{ subtotal }}</span>
       </div>
       <div class="cart-price-summary">
         <h3>Total</h3>

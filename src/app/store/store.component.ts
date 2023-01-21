@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 
 import { ErrorDialogComponent } from '../shared/components/error-dialog/error-dialog.component';
 import { IProductCart } from './models/cart.interface';
@@ -15,7 +15,7 @@ import { StoreService } from './services/store.service';
 })
 export class StoreComponent implements OnInit {
   @ViewChild('sidenav') cart: any;
-
+  
   public productAmount: FormControl = new FormControl(1);
   public products$: Observable<IProduct[]> = new Observable<[]>();
   public cartItems: IProductCart[] = [];
@@ -26,6 +26,7 @@ export class StoreComponent implements OnInit {
 
   ngOnInit(): void {
     this.products$ = this.storeService.getProducts().pipe(
+      map((data) => data.products),
       catchError((err) => {
         this.handleError();
         return of([]);
