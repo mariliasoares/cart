@@ -5,6 +5,7 @@ import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +26,8 @@ registerLocaleData(ptBr);
     FormsModule,
     ReactiveFormsModule,
     ReactiveFormsModule,
-    HomeModule
+    HomeModule,
+    NgxSkeletonLoaderModule
   ],
   providers: [
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },

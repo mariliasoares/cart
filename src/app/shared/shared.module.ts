@@ -14,10 +14,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
+import { SwiperModule } from 'swiper/angular';
 
 
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { MiniCartComponent } from './components/mini-cart/mini-cart.component';
+import { CardComponent } from './components/card/card.component';
 
 
 const materialModules = [
@@ -33,10 +35,11 @@ const materialModules = [
   MatSelectModule,
   MatMenuModule,
   MatListModule,
-  MatInputModule
+  MatInputModule,
+  SwiperModule
 ];
 
-const components = [ErrorDialogComponent, MiniCartComponent];
+const components = [ErrorDialogComponent, MiniCartComponent, CardComponent];
 
 @NgModule({
   declarations: [components],
