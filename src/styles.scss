@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@use './assets/scss/components/index';
+@use "./assets/scss/components/index";
 
 html,
 body {
@@ -12,4 +12,11 @@ body {
 * {
   margin: 0;
   box-sizing: border-box;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
 }

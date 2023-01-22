@@ -5,17 +5,17 @@ import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeModule } from './pages/home/home.module';
 import { SharedModule } from './shared/shared.module';
+
 
 registerLocaleData(ptBr);
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,8 +24,8 @@ registerLocaleData(ptBr);
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSkeletonLoaderModule,
     ReactiveFormsModule,
+    HomeModule
   ],
   providers: [
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },

@@ -1,3 +1,4 @@
+import { IProduct } from '../../../shared/models/product.interface';
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
@@ -17,6 +18,15 @@ export class StoreService {
       .pipe(
         take(1),
         map((products) => products)
+      );
+  }
+
+  getProductById(id: number): Observable<IProduct> {
+    return this.http
+      .get<IProduct>(`https://dummyjson.com/products/${id}`)
+      .pipe(
+        take(1),
+        map((product) => product)
       );
   }
 }

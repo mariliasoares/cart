@@ -13,6 +13,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+
 
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { MiniCartComponent } from './components/mini-cart/mini-cart.component';
@@ -30,7 +32,8 @@ const materialModules = [
   MatDialogModule,
   MatSelectModule,
   MatMenuModule,
-  MatListModule
+  MatListModule,
+  MatInputModule
 ];
 
 const components = [ErrorDialogComponent, MiniCartComponent];
