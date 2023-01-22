@@ -54,7 +54,6 @@ export class PdpComponent implements OnInit {
     if (this.cartService.containsProductInCart(product.id)) {
       const index = this.cartService.findProductIndex(product.id);
       this.cartService.increaseProductAmount(index, this.productAmount.value);
-      this.cartService.updateCartTotals();
       this.sidenav.open();
       return;
     }

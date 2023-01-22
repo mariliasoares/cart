@@ -15,6 +15,10 @@ const routes: Routes = [
       {
         path: 'product/:id',
         component: PdpComponent
+      },
+      {
+        path: 'cart',
+        loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
       }
     ]
   }

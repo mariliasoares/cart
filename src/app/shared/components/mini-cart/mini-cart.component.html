@@ -7,8 +7,9 @@
   </div>
 
   <div class="cart-content-wrapper">
-    <ng-container *ngIf="!cartEmpty(); else emptyCart">
-      <ul class="stocked-cart" *ngFor="let item of cartItems(); index as i">
+    <ng-container *ngIf="(cart$ | async) as cart; else emptyCart">
+      {{cart | json}}
+      <ul class="stocked-cart" *ngFor="let item of cart; index as i">
         <li class="cart-item">
           <div class="item-image-wrapper">
             <img [src]="item.info.images[0]" [alt]="item.info.title" />
@@ -41,11 +42,11 @@
 <div class="cart-checkout">
   <div class="cart-price-summary">
     <p>Subtotal</p>
-    <span>{{ cartSubtotal() | currency }}</span>
+    <span>{{ (subtotal$ | async) | currency }}</span>
   </div>
   <div class="cart-price-summary">
     <h3>Total</h3>
-    <span>{{ cartTotal() | currency }}</span>
+    <span>{{ (total$ | async) | currency }}</span>
   </div>
   <button mat-flat-button color="primary" class="bnt-checkout">Checkout</button>
 </div>

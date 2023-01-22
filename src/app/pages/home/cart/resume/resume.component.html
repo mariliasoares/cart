@@ -1,0 +1,27 @@
+<div class="cart-resume-wrapper">
+  <ul class="stocked-cart">
+    <li class="cart-item" *ngFor="let item of (cart$ | async); index as i">
+      <div class="item-image-wrapper">
+        <img [src]="item.info.images[0]" [alt]="item.info.title" />
+      </div>
+      <div class="item-information">
+        <h3>{{ item.info.title }}</h3>
+        <!-- <mat-select [formControl]="productAmount" [value]="item.amount" panelClass="select">
+          <mat-option
+          *ngFor="let amount of amountOfProducts"
+          [value]="amount"
+          (click)="handleProductAmountChange(item, i, productAmount.value)" 
+            >{{ amount }}</mat-option
+          >
+        </mat-select> -->
+
+        <span>{{ item.totalPrice | currency }}</span>
+      </div>
+      <div class="item-actions">
+        <button mat-icon-button (click)="deleteItem(item.info.id)">
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
