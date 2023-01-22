@@ -40,11 +40,8 @@ export class CartService {
     this.subtotal = this.cartTotal;
   }
 
-  increaseProductAmount(index: number): void {
-    const MAX_ITEMS_PER_PURCHASE = 9;
-    if (this.cartItems[index].amount < MAX_ITEMS_PER_PURCHASE) {
-      this.cartItems[index].amount += 1;
-    }
+  increaseProductAmount(index: number, value: number = 1): void {
+    this.cartItems[index].amount += value;
   }
 
   calculateItemTotalPrice(product: IProductCart): number {
