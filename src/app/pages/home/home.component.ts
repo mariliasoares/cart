@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { catchError, map, Observable, of, take } from 'rxjs';
@@ -30,7 +31,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     private storeService: StoreService,
     private SidenavService: SidenavService,
     public dialog: MatDialog,
-    private cart: CartService
+    private cart: CartService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
   }
 
@@ -66,5 +69,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+  }
+
+  goToProductDetails(id: number) {
+    this.router.navigate(['product', id])
   }
 }

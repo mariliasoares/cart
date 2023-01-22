@@ -21,11 +21,25 @@
   padding: 0 10%;
 }
 
-.banner-images {
-  max-width: 100%;
-}
-
 .banner-home {
+  .banner-introduction {
+    width: 100%;
+    height: 380px;
+    background: url("../../../assets/img/carrinho.jpg") no-repeat center;
+    background-size: cover;
+    text-align: center;
+    padding-top: 80px;
+  }
+
+  .banner-discount {
+    width: 100%;
+    height: 380px;
+    background: url("../../../assets/img/loja.jpg") no-repeat center;
+    background-size: cover;
+    text-align: center;
+    padding-top: 80px;
+  }
+
   .swiper {
     width: 100%;
     height: 100%;
@@ -58,41 +72,44 @@
   }
 }
 
-.eletronics-container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  padding: 0 10%;
-
-  .swiper {
+.products-container {
+  margin: 50px 0;
+  .eletronics-container {
     width: 100%;
-    height: 100%;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    background: #f5f5f5;
-
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-  }
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0 10%;
 
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      background: #f5f5f5;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }

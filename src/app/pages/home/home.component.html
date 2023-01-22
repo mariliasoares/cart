@@ -12,76 +12,88 @@
       }"
       class="mySwiper"
     >
-      <ng-template swiperSlide>Slide 1</ng-template>
-      <ng-template swiperSlide>Slide 2</ng-template>
-    </swiper>
-  </section>
+      <ng-template swiperSlide>
+        <div class="banner-introduction">
 
-  <section class="eletronics-container">
-    <h2 class="subtitle">Eletrônicos</h2>
-    <swiper
-      [slidesPerView]="2"
-      [spaceBetween]="20"
-      [navigation]="true"
-      [loop]="true"
-      [breakpoints]="{
-        '768': {
-          slidesPerView: 3,
-          spaceBetween: 20
-        },
-        '1024': {
-          slidesPerView: 4,
-          spaceBetween: 10
-        },
-        '1300': {
-          slidesPerView: 5,
-          spaceBetween: 10
-        }
-      }"
-      class="mySwiper"
-    >
-      <ng-template swiperSlide *ngFor="let eletronic of eletronics">
-        <app-card
-          [product]="eletronic"
-          (addProductToCart)="addProductToCart($event)"
-        >
-        </app-card>
+        </div>
+      </ng-template>
+      <ng-template swiperSlide>
+        <div class="banner-discount">
+
+        </div>
       </ng-template>
     </swiper>
   </section>
 
-  <section class="eletronics-container">
-    <h2 class="subtitle">Cuidados com a pele</h2>
-    <swiper
-      [slidesPerView]="2"
-      [spaceBetween]="20"
-      [navigation]="true"
-      [loop]="true"
-      [breakpoints]="{
-        '768': {
-          slidesPerView: 3,
-          spaceBetween: 20
-        },
-        '1024': {
-          slidesPerView: 4,
-          spaceBetween: 10
-        },
-        '1300': {
-          slidesPerView: 5,
-          spaceBetween: 10
-        }
-      }"
-      class="mySwiper"
-    >
-      <ng-template swiperSlide *ngFor="let item of fragances">
-        <app-card
-          [product]="item"
-          (addProductToCart)="addProductToCart($event)"
-        >
-        </app-card>
-      </ng-template>
-    </swiper>
-  </section>
+  <div class="products-container">
+    <section class="eletronics-container">
+      <h2 class="subtitle">Eletrônicos</h2>
+      <swiper
+        [slidesPerView]="2"
+        [spaceBetween]="20"
+        [navigation]="true"
+        [loop]="true"
+        [breakpoints]="{
+          '768': {
+            slidesPerView: 3,
+            spaceBetween: 20
+          },
+          '1024': {
+            slidesPerView: 4,
+            spaceBetween: 10
+          },
+          '1300': {
+            slidesPerView: 5,
+            spaceBetween: 10
+          }
+        }"
+        class="mySwiper"
+      >
+        <ng-template swiperSlide *ngFor="let eletronic of eletronics">
+          <app-card
+            [product]="eletronic"
+            (addProductToCart)="addProductToCart($event)"
+            (goToProductDetails)="goToProductDetails(eletronic.id)"
+          >
+          </app-card>
+        </ng-template>
+      </swiper>
+    </section>
+
+    <section class="eletronics-container">
+      <h2 class="subtitle">Cuidados com a pele</h2>
+      <swiper
+        [slidesPerView]="2"
+        [spaceBetween]="20"
+        [navigation]="true"
+        [loop]="true"
+        [breakpoints]="{
+          '768': {
+            slidesPerView: 3,
+            spaceBetween: 20
+          },
+          '1024': {
+            slidesPerView: 4,
+            spaceBetween: 10
+          },
+          '1300': {
+            slidesPerView: 5,
+            spaceBetween: 10
+          }
+        }"
+        class="mySwiper"
+      >
+        <ng-template swiperSlide *ngFor="let item of fragances">
+          <app-card
+            [product]="item"
+            (addProductToCart)="addProductToCart($event)"
+            (goToProductDetails)="goToProductDetails(item.id)"
+          >
+          </app-card>
+        </ng-template>
+      </swiper>
+    </section>
+  </div>
 </div>
 
 <ng-template #loading>

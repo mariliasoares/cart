@@ -9,6 +9,7 @@ import { IProduct } from '../../models/product.interface';
 export class CardComponent implements OnInit {
   @Input() product: any;
   @Output() addProductToCart = new EventEmitter<IProduct>();
+  @Output() goToProductDetails = new EventEmitter<IProduct>();
 
   constructor() { }
 
@@ -18,5 +19,9 @@ export class CardComponent implements OnInit {
   addToCart() {
     if (this.product)
     this.addProductToCart.emit(this.product);
+  }
+
+  goToDetails() {
+    this.goToProductDetails.emit();
   }
 }

@@ -12,11 +12,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
 import { HomeModule } from './pages/home/home.module';
 import { SharedModule } from './shared/shared.module';
+import { FooterComponent } from './core/footer/footer.component';
 
 
 registerLocaleData(ptBr);
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
