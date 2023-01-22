@@ -25,8 +25,7 @@ export class CartService {
         info: item,
       });
       console.log(this.cartItems);
-      this.cartTotal = this.calculateCartTotal();
-      this.subtotal = this.cartTotal;
+      this.updateCartTotals();
       return;
     }
 
@@ -36,15 +35,11 @@ export class CartService {
     this.updateProductTotalPrice(cartProduct, productIndex);
 
     console.log(this.cartItems);
-    this.cartTotal = this.calculateCartTotal();
-    this.subtotal = this.cartTotal;
+    this.updateCartTotals();
   }
 
-  increaseProductAmount(index: number): void {
-    const MAX_ITEMS_PER_PURCHASE = 9;
-    if (this.cartItems[index].amount < MAX_ITEMS_PER_PURCHASE) {
-      this.cartItems[index].amount += 1;
-    }
+  increaseProductAmount(index: number, value: number = 1): void {
+    this.cartItems[index].amount += value;
   }
 
   calculateItemTotalPrice(product: IProductCart): number {
@@ -83,8 +78,7 @@ export class CartService {
     this.cartItems.forEach((product, index) => {
       if (product.info.id === id) {
         this.cartItems.splice(index, 1);
-        this.cartTotal = this.calculateCartTotal();
-        this.subtotal = this.cartTotal;
+        this.updateCartTotals();
         return;
       }
     });
@@ -104,12 +98,16 @@ export class CartService {
       product,
       this.findProductIndex(product.info.id)
     );
-    this.cartTotal = this.calculateCartTotal();
-    this.subtotal = this.cartTotal;
+    this.updateCartTotals();
   }
 
   productAmount(index: number): number {
     return this.cartItems[index].amount;
+  }
+
+  updateCartTotals(): void {
+    this.cartTotal = this.calculateCartTotal();
+    this.subtotal = this.cartTotal;
   }
 
   get cartSubtotal(): number {
