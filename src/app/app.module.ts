@@ -4,7 +4,6 @@ import ptBr from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +18,6 @@ registerLocaleData(ptBr);
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    NgxSkeletonLoaderModule,
     HttpClientModule,
   ],
   providers: [
