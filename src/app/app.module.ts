@@ -1,4 +1,5 @@
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import ptBr from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,7 +19,8 @@ registerLocaleData(ptBr);
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    HttpClientModule,
   ],
   providers: [
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
