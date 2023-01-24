@@ -1,0 +1,21 @@
+<mat-card class="product-card" (click)="goToDetails()">
+  <div class="product-image">
+    <img [src]="product.images[0]" [alt]="product.title" />
+  </div>
+  <mat-card-content>
+    <div class="product-title-wrapper">
+      <h2 class="product-title">{{ product.title }}</h2>
+    </div>
+    <span class="product-rating">Rating: {{ product.rating }}/5</span>
+    <div class="product-price">{{ product.price | currency }}</div>
+  </mat-card-content>
+  <mat-card-actions class="product-actions">
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="addToCart()"
+    >
+      Adicionar ao carrinho
+    </button>
+  </mat-card-actions>
+</mat-card>
